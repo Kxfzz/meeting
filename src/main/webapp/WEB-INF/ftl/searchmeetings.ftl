@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>CoolMeeting会议管理系统</title>
-    <link rel="stylesheet" href="/styles/common.css"/>
+    <link href="/styles/common.css" rel="stylesheet"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="/My97DatePicker/WdatePicker.js"></script>
     <style type="text/css">
 
     </style>
@@ -15,41 +17,43 @@
         <div class="content-nav">
             会议预定 > 搜索会议
         </div>
-        <form>
+        <form action="/searchmeetings?" method="post">
             <fieldset>
                 <legend>搜索会议</legend>
                 <table class="formtable">
                     <tr>
                         <td>会议名称：</td>
                         <td>
-                            <input type="text" id="meetingname" maxlength="20"/>
+                            <input type="text" name="meetingname" id="meetingname" maxlength="20"/>
                         </td>
                         <td>会议室名称：</td>
                         <td>
-                            <input type="text" id="roomname" maxlength="20"/>
+                            <input type="text" name="roomname" id="roomname" maxlength="20"/>
                         </td>
                         <td>预定者姓名：</td>
                         <td>
-                            <input type="text" id="reservername" maxlength="20"/>
+                            <input type="text" name="reservationistname" id="reservationistname" maxlength="20"/>
                         </td>
                     </tr>
                     <tr>
                         <td>预定日期：</td>
-                        <td colspan="5">
-                            从&nbsp;<input type="date" id="reservefromdate" placeholder="例如：2013-10-20"/>
-                            到&nbsp;<input type="date" id="reservetodate" placeholder="例如：2013-10-22"/>
+                        <td colspan="6">
+                            在&nbsp;<input class="Wdate" type="text" name="reservationtime" id="reservationtime"
+                                          onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>以后
                         </td>
                     </tr>
                     <tr>
                         <td>会议日期：</td>
-                        <td colspan="5">
-                            从&nbsp;<input type="date" id="meetingfromdate" placeholder="例如：2013-10-20"/>
-                            到&nbsp;<input type="date" id="meetingtodate" placeholder="例如：2013-10-22"/>
+                        <td colspan="6">
+                            从&nbsp; <input class="Wdate" type="text" id="starttime" name="starttime"
+                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                            到&nbsp;<input class="Wdate" type="text" id="endtime" name="endtime"
+                                          onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="6" class="command">
-                            <input type="button" class="clickbutton" value="查询"/>
+                            <input type="submit" class="clickbutton" value="查询"/>
                             <input type="reset" class="clickbutton" value="重置"/>
                         </td>
                     </tr>
@@ -57,7 +61,7 @@
             </fieldset>
         </form>
         <div>
-            <h3 style="text-align:center;color:black">查询结果</h3>
+            <h3 style="text-align:center;color:#000000">查询结果</h3>
             <div class="pager-header">
                 <div class="header-info">
                     共<span class="info-number">${total}</span>条结果，
@@ -69,8 +73,10 @@
                     <input type="button" class="clickbutton" value="上页"/>
                     <input type="button" class="clickbutton" value="下页"/>
                     <input type="button" class="clickbutton" value="末页"/>
-                    跳到第<input name="page" type="text" id="pagenum" class="nav-number"/>页
-                    <input type="button" class="clickbutton" value="跳转"/>
+                    <form action="" style="display: inline" method="get">
+                        跳到第<input name="page" type="text" id="pagenum" class="nav-number"/>页
+                        <input type="submit" class="clickbutton" value="跳转"/>
+                    </form>
                 </div>
             </div>
         </div>
@@ -85,20 +91,21 @@
                 <th>操作</th>
             </tr>
             <#if meetings??>
-                <#list meetings as meeting>
+                <#list meetings as m>
                     <tr>
-                        <td>${meeting.}</td>
-                        <td>第一会议室</td>
-                        <td>2013-10-12 8:00</td>
-                        <td>2013-10-12 12:00</td>
-                        <td>2013-10-10 16:00</td>
-                        <td>Jerry</td>
+                        <td>${m.meetingname}</td>
+                        <td>${m.roomname}</td>
+                        <td>${m.starttime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>${m.endtime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>${m.reservationtime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>${m.reservationistname}</td>
                         <td>
                             <a class="clickbutton" href="meetingdetails.ftl">查看详情</a>
                         </td>
                     </tr>
                 </#list>
             </#if>
+
         </table>
     </div>
 </div>

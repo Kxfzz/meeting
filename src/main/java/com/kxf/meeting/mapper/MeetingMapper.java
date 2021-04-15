@@ -1,6 +1,7 @@
 package com.kxf.meeting.mapper;
 
 import com.kxf.meeting.model.Meeting;
+import com.kxf.meeting.model.MeetingDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -25,17 +26,20 @@ public interface MeetingMapper {
 
     /**
      * 分页查询获得所有meeting
-     * @param meeting Meeting
-     * @param page 页数
-     * @param pageSize 查几条数据
+     *
+     * @param meetingDTO MeetingDTO
+     * @param page       页数
+     * @param pagesize   查几条数据
      * @return
      */
-    List<Meeting> getAllMeetings(@Param("meeting") Meeting meeting,@Param("page") Integer page,@Param("pagesize") Integer pageSize);
+    List<MeetingDTO> listMeetingDTOs(@Param("mdto") MeetingDTO meetingDTO, @Param("page") Integer page,
+                                     @Param("pagesize") Integer pagesize);
 
     /**
      * 获取员工数量
-     * @param meeting Meeting
+     *
+     * @param meetingDTO MeetingDTO
      * @return Long
      */
-    Long getTotal(Meeting meeting);
+    Long getTotal(@Param("mdto") MeetingDTO meetingDTO);
 }

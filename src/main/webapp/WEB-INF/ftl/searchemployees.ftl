@@ -78,11 +78,17 @@
                     当前第<span class="info-number">${page}</span>页
                 </div>
                 <div class="header-nav">
-                    <input type="button" class="clickbutton" value="首页"/>
-                    <input type="button" class="clickbutton" value="上页"/>
-                    <input type="button" class="clickbutton" value="下页"/>
-                    <input type="button" class="clickbutton" value="末页"/>
-                    <form action="/admin/searchemployees" style="display: inline" method="get">
+                    <a type="button" class="clickbutton" href="/admin/searchemployees?status=${employee.status}&page=1">首页</a>
+                    <a type="button" class="clickbutton"
+                       href="/admin/searchemployees?status=${employee.status}&page=${page-1}">上页</a>
+                    <a type="button" class="clickbutton"
+                       href="/admin/searchemployees?status=${employee.status}&page=${page+1}">下页</a>
+                    <a type="button" class="clickbutton"
+                       href="/admin/searchemployees?status=${employee.status}&page=${pagenum}">末页</a>
+                    <form action="/admin/searchemployees"
+                          style="display: inline"
+                          method="get">
+                        <input type="hidden" name="status" value="${employee.status}">
                         跳到第<input name="page" type="text" id="pagenum" class="nav-number"/>页
                         <input type="submit" class="clickbutton" value="跳转"/>
                     </form>

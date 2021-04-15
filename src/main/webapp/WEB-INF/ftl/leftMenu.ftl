@@ -26,7 +26,7 @@
             </#if>
             <li class="sidebar-menuitem"><a href="/meetingrooms">查看会议室</a></li>
             <li class="sidebar-menuitem"><a href="/bookmeeting">预定会议</a></li>
-            <li class="sidebar-menuitem"><a href="/searchmeetings?status=0">搜索会议</a></li>
+            <li class="sidebar-menuitem"><a href="/searchmeetings">搜索会议</a></li>
         </ul>
     </div>
 </div>

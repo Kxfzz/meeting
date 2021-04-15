@@ -17,14 +17,55 @@
         </foreach>
     </insert>
 
-    <select id="getAllMeetings" resultType="meeting">
-        select m.meetingname,mr.roomname,m.starttime,m.endtime,m.reservationtime,e.employeename
-        from meeting m,meetingroom mr,employee e
-        where m.status = #{meeting.status} and m.roomid = mr.roomid and m.reservationistid = e.employeeid
+    <select id="listMeetingDTOs" resultType="meetingDTO">
+        select m.meetingname, m.starttime, m.endtime, m.reservationtime, m.roomid, m.reservationistid,
+        e.employeename as reservationistname, mr.roomname as roomname
+        from meeting as m,employee as e,meetingroom as mr
+        where m.reservationistid = e.employeeid
+        and m.roomid = mr.roomid
+        <if test="mdto.meetingname!=null">
+            and meetingname like concat('%',#{mdto.meetingname},'%')
+        </if>
+        <if test="mdto.roomname!=null">
+            and mr.roomname like concat('%',#{mdto.roomname},'%')
+        </if>
+        <if test="mdto.reservationistname!=null">
+            and e.employeename like concat('%',#{mdto.reservationistname},'%')
+        </if>
+        <if test="mdto.starttime!=null ">
+            and starttime &gt;= #{mdto.starttime}
+        </if>
+        <if test="mdto.endtime!=null ">
+            and endtime &lt;= #{mdto.endtime}
+        </if>
+        <if test="mdto.reservationtime!=null">
+            and m.reservationtime &gt;= #{mdto.reservationtime}
+        </if>
         limit #{page},#{pagesize}
     </select>
 
-    <select id="getTotal">
-        select count(*) from meeting where status = #{status};
+
+    <select id="getTotal" resultType="long">
+        select count(*) from meeting as m, employee as e,meetingroom as mr
+        where m.reservationistid = e.employeeid
+        and m.roomid = mr.roomid
+        <if test="mdto.meetingname!=null">
+            and m.meetingname like concat('%',#{mdto.meetingname},'%')
+        </if>
+        <if test="mdto.roomname!=null">
+            and mr.roomname like concat('%',#{mdto.roomname},'%')
+        </if>
+        <if test="mdto.reservationistname!=null">
+            and e.employeename like concat('%',#{mdto.reservationistname},'%')
+        </if>
+        <if test="mdto.starttime!=null ">
+            and starttime &gt;= #{mdto.starttime}
+        </if>
+        <if test="mdto.endtime!=null ">
+            and endtime &lt;= #{mdto.endtime}
+        </if>
+        <if test="mdto.reservationtime!=null">
+            and m.reservationtime &gt;= #{mdto.reservationtime}
+        </if>
     </select>
 </mapper>

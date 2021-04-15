@@ -2,6 +2,7 @@ package com.kxf.meeting.service;
 
 import com.kxf.meeting.mapper.MeetingMapper;
 import com.kxf.meeting.model.Meeting;
+import com.kxf.meeting.model.MeetingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,23 +32,24 @@ public class MeetingService {
 
     /**
      * 分页查询获得所有meeting
-     * @param meeting Meeting
-     * @param page 页数
-     * @param pageSize 查几条数据
+     *
+     * @param meetingDTO MeetingDTO
+     * @param page       页数
+     * @param pagesize   查几条数据
      * @return
      */
-    public List<Meeting> getAllMeetings(Meeting meeting, Integer page, Integer pageSize) {
-        //这个page是从第几行数据开始查
-        page = (page - 1) * pageSize;
-        return meetingMapper.getAllMeetings(meeting,page,pageSize);
+    public List<MeetingDTO> listMeetingDTOs(MeetingDTO meetingDTO, Integer page, Integer pagesize) {
+        page = (page - 1) * pagesize;
+        return meetingMapper.listMeetingDTOs(meetingDTO, page, pagesize);
     }
 
     /**
      * 获取员工数量
-     * @param meeting Meeting
+     *
+     * @param meetingDTO MeetingDTO
      * @return Long
      */
-    public Long getTotal(Meeting meeting) {
-        return meetingMapper.getTotal(meeting);
+    public Long getTotal(MeetingDTO meetingDTO) {
+        return meetingMapper.getTotal(meetingDTO);
     }
 }

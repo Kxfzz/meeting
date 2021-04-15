@@ -3,6 +3,7 @@ package com.kxf.meeting.controller;
 import com.kxf.meeting.model.Department;
 import com.kxf.meeting.model.Employee;
 import com.kxf.meeting.model.Meeting;
+import com.kxf.meeting.model.MeetingDTO;
 import com.kxf.meeting.service.DepartmentService;
 import com.kxf.meeting.service.EmployeeService;
 import com.kxf.meeting.service.MeetingRoomService;
@@ -96,14 +97,16 @@ public class MeetingController {
      * @return searchmeetings
      */
     @RequestMapping("/searchmeetings")
-    public String searchmeetings(Meeting meeting, @RequestParam(defaultValue = "1") Integer page, Model model) {
-        List<Meeting> meetings = meetingService.getAllMeetings(meeting,page,PAGE_SIZE);
-        Long total = meetingService.getTotal(meeting);
-        model.addAttribute("meetings", meetings);
+    public String getAllMeetings(MeetingDTO meetingDTO, @RequestParam(defaultValue = "1") Integer page, Model model) {
+        List<MeetingDTO> listMeetingDTOs = meetingService.listMeetingDTOs(meetingDTO, page, PAGE_SIZE);
+
+        Long total = meetingService.getTotal(meetingDTO);
+
+        model.addAttribute("meetings", listMeetingDTOs);
         model.addAttribute("total", total);
         model.addAttribute("page", page);
-        model.addAttribute("pagenum",
-                total % PAGE_SIZE == 0 ? total / PAGE_SIZE : total / PAGE_SIZE + 1);
+        model.addAttribute("pagenum", total % PAGE_SIZE == 0 ? total / PAGE_SIZE : total / PAGE_SIZE + 1);
+
         return "searchmeetings";
     }
 }
