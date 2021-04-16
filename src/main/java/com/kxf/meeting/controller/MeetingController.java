@@ -109,4 +109,20 @@ public class MeetingController {
 
         return "searchmeetings";
     }
+
+    /**
+     * 返回meetingdetails页面并且根据meetingid添加会议到model中
+     *
+     * @param meetingid Integer
+     * @param model     Model
+     * @return meetingdetails
+     */
+    @RequestMapping("/meetingdetails")
+    public String meetingdetails(Integer meetingid, Model model) {
+        Meeting meeting = meetingService.getmeetingByid(meetingid);
+        model.addAttribute("meeting", meeting);
+        List<Employee> listEmployee = employeeService.getEmpsByid(meetingid);
+        model.addAttribute("ems", listEmployee);
+        return "meetingdetails";
+    }
 }

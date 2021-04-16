@@ -17,28 +17,32 @@
         <div class="content-nav">
             会议预定 > 搜索会议
         </div>
-        <form action="/searchmeetings?" method="post">
+        <form action="/searchmeetings" method="post">
             <fieldset>
                 <legend>搜索会议</legend>
                 <table class="formtable">
                     <tr>
                         <td>会议名称：</td>
                         <td>
-                            <input type="text" name="meetingname" id="meetingname" maxlength="20"/>
+                            <input type="text" name="meetingname" id="meetingname"
+                                   value="<#if meetingDTO??>${meetingDTO.meetingname!''}</#if>" maxlength="20"/>
                         </td>
                         <td>会议室名称：</td>
                         <td>
-                            <input type="text" name="roomname" id="roomname" maxlength="20"/>
+                            <input type="text" name="roomname" id="roomname"
+                                   value="<#if meetingDTO??>${meetingDTO.roomname!''}</#if>" maxlength="20"/>
                         </td>
                         <td>预定者姓名：</td>
                         <td>
-                            <input type="text" name="reservationistname" id="reservationistname" maxlength="20"/>
+                            <input type="text" name="reservationistname" id="reservationistname"
+                                   value="<#if meetingDTO??>${meetingDTO.reservationistname!''}</#if>" maxlength="20"/>
                         </td>
                     </tr>
                     <tr>
                         <td>预定日期：</td>
                         <td colspan="6">
                             在&nbsp;<input class="Wdate" type="text" name="reservationtime" id="reservationtime"
+                                          value="<#if meetingDTO??>${(meetingDTO.reservationtime?string('yyyy-MM-dd HH:mm:ss'))!''}</#if>"
                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>以后
                         </td>
                     </tr>
@@ -46,8 +50,10 @@
                         <td>会议日期：</td>
                         <td colspan="6">
                             从&nbsp; <input class="Wdate" type="text" id="starttime" name="starttime"
+                                           value="<#if meetingDTO??>${(meetingDTO.starttime?string('yyyy-MM-dd HH:mm:ss'))!''}</#if>"
                                            onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                             到&nbsp;<input class="Wdate" type="text" id="endtime" name="endtime"
+                                          value="<#if meetingDTO??>${(meetingDTO.endtime?string('yyyy-MM-dd HH:mm:ss'))!''}</#if>"
                                           onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                         </td>
                     </tr>
@@ -69,10 +75,13 @@
                     当前第<span class="info-number">${page}</span>页
                 </div>
                 <div class="header-nav">
-                    <input type="button" class="clickbutton" value="首页"/>
-                    <input type="button" class="clickbutton" value="上页"/>
-                    <input type="button" class="clickbutton" value="下页"/>
-                    <input type="button" class="clickbutton" value="末页"/>
+                    <a type="button" class="clickbutton" href="/searchmeetings?&page=1">首页</a>
+                    <a type="button" class="clickbutton"
+                       href="/searchmeetings?page=${page-1}">上页</a>
+                    <a type="button" class="clickbutton"
+                       href="/searchmeetings?page=${page+1}">下页</a>
+                    <a type="button" class="clickbutton"
+                       href="/searchmeetings?page=${pagenum}">末页</a>
                     <form action="" style="display: inline" method="get">
                         跳到第<input name="page" type="text" id="pagenum" class="nav-number"/>页
                         <input type="submit" class="clickbutton" value="跳转"/>
@@ -100,7 +109,7 @@
                         <td>${m.reservationtime?string('yyyy-MM-dd HH:mm:ss')}</td>
                         <td>${m.reservationistname}</td>
                         <td>
-                            <a class="clickbutton" href="meetingdetails.ftl">查看详情</a>
+                            <a class="clickbutton" href="/meetingdetails?meetingid=${m.meetingid}">查看详情</a>
                         </td>
                     </tr>
                 </#list>

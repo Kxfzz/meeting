@@ -42,4 +42,12 @@ public interface MeetingMapper {
      * @return Long
      */
     Long getTotal(@Param("mdto") MeetingDTO meetingDTO);
+
+    /**
+     * 根据meetingid获取会议信息
+     *
+     * @param meetingid Integer
+     * @return MeetingDTO
+     */
+    Meeting getMeetingById(Integer meetingid);
 }

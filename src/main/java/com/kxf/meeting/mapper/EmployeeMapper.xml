@@ -54,4 +54,13 @@
         from employee
         where departmentid = #{depId};
     </select>
+
+    <select id="getAllEmpsByid" resultType="employee">
+        select *
+        from employee
+        where employeeid in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>;
+    </select>
 </mapper>

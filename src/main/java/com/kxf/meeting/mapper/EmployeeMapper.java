@@ -66,4 +66,12 @@ public interface EmployeeMapper {
      * @return List<Employee>
      */
     List<Employee> getEmpsByDepId(Integer depId);
+
+    /**
+     * 通过employeeid集合获取员工的信息
+     *
+     * @param list List<Integer>
+     * @return List<Employee>
+     */
+    List<Employee> getAllEmpsByid(List<Integer> list);
 }

@@ -52,4 +52,16 @@ public class MeetingService {
     public Long getTotal(MeetingDTO meetingDTO) {
         return meetingMapper.getTotal(meetingDTO);
     }
+
+    /**
+     * 根据meetingid获取会议信息
+     *
+     * @param meetingid Integer
+     * @return MeetingDTO
+     */
+    public Meeting getmeetingByid(Integer meetingid) {
+        return meetingMapper.getMeetingById(meetingid);
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.kxf.meeting.service;
 
 import com.kxf.meeting.mapper.EmployeeMapper;
+import com.kxf.meeting.mapper.MeetingParticipantsMapper;
 import com.kxf.meeting.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private MeetingParticipantsMapper meetingparticipantsMapper;
 
     /**
      * 登录
@@ -105,5 +109,19 @@ public class EmployeeService {
      */
     public List<Employee> getEmpsByDepId(Integer depId) {
         return employeeMapper.getEmpsByDepId(depId);
+    }
+
+    /**
+     * 通过meetingid获取员工信息
+     *
+     * @param meetingid Integer
+     * @return List<Employee>
+     */
+    public List<Employee> getEmpsByid(Integer meetingid) {
+
+        List<Integer> list = meetingparticipantsMapper.getAllBymeetingid(meetingid);
+
+        return employeeMapper.getAllEmpsByid(list);
+
     }
 }

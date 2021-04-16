@@ -18,7 +18,7 @@
     </insert>
 
     <select id="listMeetingDTOs" resultType="meetingDTO">
-        select m.meetingname, m.starttime, m.endtime, m.reservationtime, m.roomid, m.reservationistid,
+        select m.meetingid,m.meetingname, m.starttime, m.endtime, m.reservationtime, m.roomid, m.reservationistid,
         e.employeename as reservationistname, mr.roomname as roomname
         from meeting as m,employee as e,meetingroom as mr
         where m.reservationistid = e.employeeid
@@ -67,5 +67,11 @@
         <if test="mdto.reservationtime!=null">
             and m.reservationtime &gt;= #{mdto.reservationtime}
         </if>
+    </select>
+
+    <select id="getMeetingById" resultType="meeting">
+        select *
+        from meeting
+        where meetingid = #{meetingid};
     </select>
 </mapper>
