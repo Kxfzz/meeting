@@ -49,5 +49,20 @@ public interface MeetingMapper {
      * @param meetingid Integer
      * @return MeetingDTO
      */
-    Meeting getMeetingById(Integer meetingid);
+    Meeting getMeetingByid(Integer meetingid);
+
+    /**
+     * 根据employeeid获取会议信息
+     *
+     * @param employeeid Integer
+     * @return List<Meeting>
+     */
+    List<Meeting> getMeetingById(Integer employeeid);
+
+    /**
+     * 获得取消会议
+     *
+     * @return List<Meeting>
+     */
+    List<Meeting> getCancelMeeting();
 }

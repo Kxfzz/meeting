@@ -1,6 +1,7 @@
 package com.kxf.meeting.mapper;
 
 import com.kxf.meeting.model.MeetingRoom;
+import com.kxf.meeting.model.RoomDTO;
 
 import java.util.List;
 
@@ -36,4 +37,12 @@ public interface MeetingRoomMapper {
      * @return Integer
      */
     Integer addMr(MeetingRoom meetingRoom);
+
+    /**
+     * 得到所有RoomDTO
+     *
+     * @return List<RoomDTO>
+     */
+    List<RoomDTO> getAll();
+
 }
