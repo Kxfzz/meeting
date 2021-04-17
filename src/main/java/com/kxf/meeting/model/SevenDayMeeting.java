@@ -58,4 +58,16 @@ public class SevenDayMeeting {
     public void setMeetingid(Integer meetingid) {
         this.meetingid = meetingid;
     }
+
+    @Override
+    public String toString() {
+        return "SevenDayMeeting{" +
+                "meetingname='" + meetingname + '\'' +
+                ", roomname='" + roomname + '\'' +
+                ", starttime=" + starttime +
+                ", endtime=" + endtime +
+                ", roomid=" + roomid +
+                ", meetingid=" + meetingid +
+                '}';
+    }
 }

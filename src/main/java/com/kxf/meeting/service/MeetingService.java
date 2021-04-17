@@ -142,4 +142,14 @@ public class MeetingService {
 
         return listDto;
     }
+
+    /**
+     * 获取当前用户预订的会议
+     *
+     * @param employeeid Integer
+     * @return List<MeetingDTO>
+     */
+    public List<MeetingDTO> getmeetingofmybookCanCancle(Integer employeeid) {
+        return meetingMapper.getmeetingofmybook(employeeid);
+    }
 }

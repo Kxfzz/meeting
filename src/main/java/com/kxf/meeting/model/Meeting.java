@@ -113,4 +113,21 @@ public class Meeting {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Meeting{" +
+                "meetingid=" + meetingid +
+                ", meetingname='" + meetingname + '\'' +
+                ", roomid=" + roomid +
+                ", reservationistid=" + reservationistid +
+                ", numberofparticipants=" + numberofparticipants +
+                ", starttime=" + starttime +
+                ", endtime=" + endtime +
+                ", reservationtime=" + reservationtime +
+                ", canceledtime=" + canceledtime +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

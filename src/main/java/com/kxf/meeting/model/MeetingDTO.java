@@ -1,5 +1,7 @@
 package com.kxf.meeting.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class MeetingDTO {
@@ -8,10 +10,13 @@ public class MeetingDTO {
     //会议名称
     private String meetingname;
     //开始时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date starttime;
     //结束时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endtime;
     //预约时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date reservationtime;
     //房间号
     private Integer roomid;

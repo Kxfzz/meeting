@@ -1,11 +1,15 @@
 package com.kxf.meeting.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class CancelMeeting {
     private String meetingname;
     private String roomname;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date starttime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endtime;
     private String canceledreason;
     private Integer roomid;

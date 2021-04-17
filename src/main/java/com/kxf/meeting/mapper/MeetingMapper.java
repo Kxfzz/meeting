@@ -65,4 +65,12 @@ public interface MeetingMapper {
      * @return List<Meeting>
      */
     List<Meeting> getCancelMeeting();
+
+    /**
+     * 获取当前用户预订的会议
+     *
+     * @param employeeid Integer
+     * @return List<MeetingDTO>
+     */
+    List<MeetingDTO> getmeetingofmybook(Integer employeeid);
 }

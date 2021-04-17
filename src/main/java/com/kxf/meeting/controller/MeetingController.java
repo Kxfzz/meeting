@@ -80,6 +80,8 @@ public class MeetingController {
     public String doAddMeeting(Meeting meeting, Integer[] mps, HttpSession session) {
         Employee currentuser = (Employee) session.getAttribute("currentUser");
         meeting.setReservationistid(currentuser.getEmployeeId());
+        //给meeting的status设置状态为0 （0代表有的会议，1代表取消的会议）
+        meeting.setStatus(0);
         Integer result = meetingService.addMeeting(meeting, mps);
         if (result == 1) {
             return "redirect:/searchmeetings";

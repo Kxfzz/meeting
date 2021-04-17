@@ -89,4 +89,23 @@
         from meeting
         where status = 1
     </select>
+
+    <select id="getmeetingofmybook" resultType="meetingDTO">
+        select m.meetingid,
+               m.meetingname,
+               m.starttime,
+               m.endtime,
+               m.reservationtime,
+               m.roomid,
+               m.reservationistid,
+               e.employeename as reservationistname,
+               mr.roomname    as roomname
+        from meeting as m,
+             employee as e,
+             meetingroom as mr
+        where m.reservationistid = e.employeeid
+          and m.roomid = mr.roomid
+          and e.employeeid = #{employeeid}
+          and m.status = 0
+    </select>
 </mapper>

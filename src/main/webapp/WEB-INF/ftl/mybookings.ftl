@@ -25,106 +25,20 @@
                 <th>会议预定时间</th>
                 <th>操作</th>
             </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
-            <tr>
-                <td>业务洽谈会</td>
-                <td>第一会议室</td>
-                <td>2013-10-12 8:00</td>
-                <td>2013-10-12 12:00</td>
-                <td>2013-10-10 16:00</td>
-                <td>
-                    <a class="clickbutton" href="mymeetingdetails.ftl">查看/撤销</a>
-                </td>
-            </tr>
+            <#if mlist??>
+                <#list mlist as m >
+                    <tr>
+                        <td>${m.meetingname}</td>
+                        <td>${m.roomname}</td>
+                        <td>${m.starttime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>${m.endtime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>${m.reservationtime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                        <td>
+                            <a class="clickbutton" href="/mymeetingdetails?meetingid=${m.meetingid}">查看/撤销</a>
+                        </td>
+                    </tr>
+                </#list>
+            </#if>
         </table>
     </div>
 </div>
