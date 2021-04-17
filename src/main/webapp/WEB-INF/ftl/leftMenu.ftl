@@ -4,7 +4,6 @@
         <ul class="sidebar-menu">
             <li class="sidebar-menuitem"><a href="/notifications">最新通知</a></li>
             <li class="sidebar-menuitem active"><a href="/mybookings">我的预定</a></li>
-            <li class="sidebar-menuitem"><a href="/mymeetings">我的会议</a></li>
         </ul>
     </div>
     <div class="sidebar-menugroup">
