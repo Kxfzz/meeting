@@ -73,4 +73,12 @@ public interface MeetingMapper {
      * @return List<MeetingDTO>
      */
     List<MeetingDTO> getmeetingofmybook(Integer employeeid);
+
+    /**
+     * 撤销会议的操作
+     *
+     * @param meetingid      会议id
+     * @param canceledreason 撤销原因
+     */
+    void cancelmeeting(@Param("meetingid") Integer meetingid, @Param("canceledreason") String canceledreason);
 }

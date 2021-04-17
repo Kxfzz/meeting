@@ -152,4 +152,14 @@ public class MeetingService {
     public List<MeetingDTO> getmeetingofmybookCanCancle(Integer employeeid) {
         return meetingMapper.getmeetingofmybook(employeeid);
     }
+
+    /**
+     * 撤销会议的操作
+     *
+     * @param meetingid      会议id
+     * @param canceledreason 撤销原因
+     */
+    public void cancelmeeting(Integer meetingid, String canceledreason) {
+        meetingMapper.cancelmeeting(meetingid, canceledreason);
+    }
 }

@@ -25,6 +25,16 @@ public class Meeting {
     private String description;
     //状态（0启用  1已占用）
     private Integer status;
+    //取消原因
+    private String canceledreason;
+
+    public String getCanceledreason() {
+        return canceledreason;
+    }
+
+    public void setCanceledreason(String canceledreason) {
+        this.canceledreason = canceledreason;
+    }
 
     public Integer getMeetingid() {
         return meetingid;
