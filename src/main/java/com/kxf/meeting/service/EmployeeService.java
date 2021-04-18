@@ -124,4 +124,14 @@ public class EmployeeService {
         return employeeMapper.getAllEmpsByid(list);
 
     }
+
+    /**
+     * 修改密码
+     *
+     * @param username    用户名
+     * @param newpassword 新密码
+     */
+    public void doChang(String username, String newpassword) {
+        employeeMapper.doChang(username, newpassword);
+    }
 }

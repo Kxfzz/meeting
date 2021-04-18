@@ -63,4 +63,11 @@
             #{item}
         </foreach>;
     </select>
+
+    <update id="doChang">
+        update employee
+        set username = #{username},
+            password = #{newpassword}
+        where username = #{username}
+    </update>
 </mapper>

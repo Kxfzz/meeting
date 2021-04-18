@@ -74,4 +74,12 @@ public interface EmployeeMapper {
      * @return List<Employee>
      */
     List<Employee> getAllEmpsByid(List<Integer> list);
+
+    /**
+     * 修改密码
+     *
+     * @param username    用户名
+     * @param newpassword 新密码
+     */
+    void doChang(@Param("username") String username, @Param("newpassword") String newpassword);
 }

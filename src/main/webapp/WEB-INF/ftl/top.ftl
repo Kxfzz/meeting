@@ -8,8 +8,13 @@
     <div class="header-quicklink">
         欢迎您，
         <#if currentUser??>
-            <strong>${currentUser.employeeName!''}</strong>
+            <#if currentUser.role==2>
+                <strong>${currentUser.employeeName!''}-admin</strong>
+            <#else >
+                <strong>${currentUser.employeeName!''}</strong>
+            </#if>
         </#if>
-        <a href="changepassword.ftl">[修改密码]</a>
+        <a href="/logout">[退出]</a>
+        <a href="/changepassword">[修改密码]</a>
     </div>
 </div>
