@@ -4,7 +4,7 @@
     <title>Meeting会议管理系统</title>
     <link rel="stylesheet" href="/styles/common.css"/>
 
-    <script src="/static/js/jquery-3.6.0.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 
 </head>
 <body>
