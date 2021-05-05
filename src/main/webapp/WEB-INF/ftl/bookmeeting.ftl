@@ -3,6 +3,7 @@
 <head>
     <title>Meeting会议管理系统</title>
     <link rel="stylesheet" href="/styles/common.css"/>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 
@@ -158,87 +159,94 @@
     </script>
 </head>
 <body onload="body_load()">
-<#include 'top.ftl'>
-<div class="page-body">
-    <#include 'leftMenu.ftl'>
-    <div class="page-content">
-        <div class="content-nav">
-            会议预定 > 预定会议
+<div class="container">
+    <#include 'top.ftl'>
+    <div class="page-body">
+        <#include 'leftMenu.ftl'>
+        <div class="page-content">
+            <div class="content-nav">
+                会议预定 > 预定会议
+            </div>
+            <form action="/doAddMeeting" method="post" class="form-horizontal">
+                <fieldset>
+                    <legend>会议信息</legend>
+                    <table class="formtable">
+                        <div class="form-group">
+                            <label for="meetingname" class="col-sm-2 control-label">会议名称:</label>
+                            <div class="col-sm-10">
+                                <input name="meetingname" style="width: 50%" type="text"
+                                       class="form-control" id="meetingname" placeholder="会议名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="numofattendents" class="col-sm-2 control-label">预计参加人数:</label>
+                            <div class="col-sm-10">
+                                <input name="numberofparticipants" style="width: 50%" type="text"
+                                       class="form-control" id="numofattendents" placeholder="预计参加人数">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="starttime" class="col-sm-2 control-label">预计开始时间:</label>
+                            <div class="col-sm-10">
+                                <input name="starttime" style="width: 50%" type="text"
+                                       class="form-control Wdate" id="starttime" placeholder="预计开始时间"
+                                       onclick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="endtime" class="col-sm-2 control-label">预计结束时间:</label>
+                            <div class="col-sm-10">
+                                <input name="endtime" style="width: 50%" type="text"
+                                       class="form-control Wdate" id="endtime" placeholder="预计开始时间"
+                                       onclick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="numofattendents" class="col-sm-2 control-label">会议室名称:</label>
+                            <div class="col-sm-10">
+                                <select name="roomid" class="form-control" style="width: 50%">
+                                    <#list mrs as mr>
+                                        <option value="${mr.roomid}">${mr.roomname}</option>
+                                    </#list>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-2 control-label">会议说明:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="numofattendents" class="col-sm-2 control-label">选择参会人员:</label>
+                            <div class="col-sm-10">
+                                <div id="divfrom">
+                                    <select id="selDepartments" class="form-control" onchange="fillEmployees()">
+                                    </select>
+                                    <select id="selEmployees" class="form-control" multiple="true">
+                                    </select>
+                                </div>
+                                <div id="divoperator">
+                                    <input type="button" class="clickbutton btn btn-default" value="&gt;" onclick="selectEmployees()"/>
+                                    <input type="button" class="clickbutton btn btn-default" value="&lt;"
+                                           onclick="deSelectEmployees()"/>
+                                </div>
+                                <div id="divto">
+                                    <select name="mps" class="form-control" id="selSelectedEmployees" multiple="true">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <tr>
+                            <td class="command" colspan="2">
+                                <input type="submit" class="clickbutton btn btn-primary" value="预定会议"/>
+                                <input type="reset" class="clickbutton btn btn-default" value="重置"/>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
         </div>
-        <form action="/doAddMeeting" method="post">
-            <fieldset>
-                <legend>会议信息</legend>
-                <table class="formtable">
-                    <tr>
-                        <td>会议名称：</td>
-                        <td>
-                            <input name="meetingname" type="text" id="meetingname" maxlength="20"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>预计参加人数：</td>
-                        <td>
-                            <input name="numberofparticipants" type="text" id="numofattendents"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>预计开始时间：</td>
-                        <td>
-                            <input type="text" class="Wdate" id="starttime" name="starttime"
-                                   onclick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>预计结束时间：</td>
-                        <td>
-                            <input type="text" class="Wdate" id="endtime" name="endtime"
-                                   onclick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>会议室名称：</td>
-                        <td>
-                            <select name="roomid">
-                                <#list mrs as mr>
-                                    <option value="${mr.roomid}">${mr.roomname}</option>
-                                </#list>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>会议说明：</td>
-                        <td>
-                            <textarea name="description" id="description" rows="5"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>选择参会人员：</td>
-                        <td>
-                            <div id="divfrom">
-                                <select id="selDepartments" onchange="fillEmployees()">
-                                </select>
-                                <select id="selEmployees" multiple="true">
-                                </select>
-                            </div>
-                            <div id="divoperator">
-                                <input type="button" class="clickbutton" value="&gt;" onclick="selectEmployees()"/>
-                                <input type="button" class="clickbutton" value="&lt;" onclick="deSelectEmployees()"/>
-                            </div>
-                            <div id="divto">
-                                <select name="mps" id="selSelectedEmployees" multiple="true">
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="command" colspan="2">
-                            <input type="submit" class="clickbutton" value="预定会议"/>
-                            <input type="reset" class="clickbutton" value="重置"/>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </form>
     </div>
 </div>
 <div class="page-footer">

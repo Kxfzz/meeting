@@ -42,6 +42,6 @@ public class ChangePasswordController {
         } else {
             employeeService.doChang(username, newpassword);
         }
-        return "redirect:/";
+        return "redirect:/notifications";
     }
 }

@@ -3,6 +3,7 @@
 <head>
     <title>Meeting会议管理系统</title>
     <link href="/styles/common.css" rel="stylesheet"/>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
 
 
@@ -15,36 +16,38 @@
 
 </head>
 <body onload="body_load()">
-<#include 'top.ftl'>
-<div class="page-body">
-    <#include 'leftMenu.ftl'>
-    <div class="page-content">
-        <div class="content-nav">
-            会议预定 > 撤销会议预定
+<div class="container">
+    <#include 'top.ftl'>
+    <div class="page-body">
+        <#include 'leftMenu.ftl'>
+        <div class="page-content">
+            <div class="content-nav">
+                会议预定 > 撤销会议预定
+            </div>
+            <form action="/dpCancel" method="post">
+                <fieldset>
+                    <legend>撤销预定</legend>
+                    <table class="formtable">
+                        <tr>
+                            <td>会议名称：</td>
+                            <td>${meetingname!"找不到,失败"}</td>
+                        </tr>
+                        <tr>
+                            <td>撤销理由：</td>
+                            <td><textarea class="form-control" name="canceledreason" id="canceledreason" rows="5"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="command" colspan="3">
+                                <input name="meetingid" type="hidden" value="${meetingid}"/>
+                                <input type="submit" class="clickbutton btn btn-danger" value="确认撤销"/>
+                                <input type="button" class="clickbutton btn btn-default" value="返回" onclick="window.history.back();"/>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
         </div>
-        <form action="/dpCancel" method="post">
-            <fieldset>
-                <legend>撤销预定</legend>
-                <table class="formtable">
-                    <tr>
-                        <td>会议名称：</td>
-                        <td>${meetingname!"找不到,失败"}</td>
-                    </tr>
-                    <tr>
-                        <td>撤销理由：</td>
-                        <td><textarea name="canceledreason" id="canceledreason" rows="5"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="command" colspan="3">
-                            <input name="meetingid" type="hidden" value="${meetingid}"/>
-                            <input type="submit" class="clickbutton" value="确认撤销"/>
-                            <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </form>
     </div>
 </div>
 <div class="page-footer">

@@ -3,50 +3,52 @@
 <head>
     <title>Meeting会议管理系统</title>
     <link rel="stylesheet" href="/styles/common.css"/>
-
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 
 </head>
 <body>
-<#include 'top.ftl'>
-<div class="page-body">
-    <#include 'leftMenu.ftl'>
-    <div class="page-content">
-        <div class="content-nav">
-            人员管理 > 部门管理
+<div class="container">
+    <#include 'top.ftl'>
+    <div class="page-body">
+        <#include 'leftMenu.ftl'>
+        <div class="page-content">
+            <div class="content-nav">
+                人员管理 > 部门管理
+            </div>
+            <form class="form-inline" action="/admin/adddepartment">
+                <fieldset>
+                    <legend>添加部门</legend>
+                    部门名称:
+                    <input class="form-control" type="text" name="departmentname" id="departmentname" maxlength="20"/>
+                    <input type="submit" class="clickbutton btn btn-primary" value="添加"/>
+                </fieldset>
+            </form>
+            <table class="listtable table table-hover">
+                <caption>所有部门:</caption>
+                <tr class="listheader">
+                    <th>部门编号</th>
+                    <th>部门名称</th>
+                    <th>操作</th>
+                </tr>
+                <#if deps??>
+                    <#list deps as dep>
+                        <tr>
+                            <td>${dep.departmentId}</td>
+                            <td id="depname${dep.departmentId}">${dep.departmentName}</td>
+                            <td>
+                                <a class="clickbutton btn btn-default btn-xs" href="#" id="edit${dep.departmentId}"
+                                   onclick="editDep(${dep.departmentId})">编辑</a>
+                                <a class="clickbutton btn btn-default btn-xs" style="display: none" href="#" id="cancel${dep.departmentId}"
+                                   onclick="cancelDep(${dep.departmentId})">取消</a>
+                                <a class="clickbutton btn btn-danger btn-xs"
+                                   href="/admin/deletedep?departmentid=${dep.departmentId}">删除</a>
+                            </td>
+                        </tr>
+                    </#list>
+                </#if>
+            </table>
         </div>
-        <form action="/admin/adddepartment">
-            <fieldset>
-                <legend>添加部门</legend>
-                部门名称:
-                <input type="text" name="departmentname" id="departmentname" maxlength="20"/>
-                <input type="submit" class="clickbutton" value="添加"/>
-            </fieldset>
-        </form>
-        <table class="listtable">
-            <caption>所有部门:</caption>
-            <tr class="listheader">
-                <th>部门编号</th>
-                <th>部门名称</th>
-                <th>操作</th>
-            </tr>
-            <#if deps??>
-                <#list deps as dep>
-                    <tr>
-                        <td>${dep.departmentId}</td>
-                        <td id="depname${dep.departmentId}">${dep.departmentName}</td>
-                        <td>
-                            <a class="clickbutton" href="#" id="edit${dep.departmentId}"
-                               onclick="editDep(${dep.departmentId})">编辑</a>
-                            <a class="clickbutton" style="display: none" href="#" id="cancel${dep.departmentId}"
-                               onclick="cancelDep(${dep.departmentId})">取消</a>
-                            <a class="clickbutton"
-                               href="/admin/deletedep?departmentid=${dep.departmentId}">删除</a>
-                        </td>
-                    </tr>
-                </#list>
-            </#if>
-        </table>
     </div>
 </div>
 <div class="page-footer">
