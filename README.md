@@ -77,3 +77,6 @@ db.url=jdbc:mysql:///meeting?useUnicode=true&characterEncoding=UTF-8&serverTimez
 - Freemarker
 - jQuery+Ajax
 - MySQL
+
+## 7.页面：
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0519/161416_a92519c7_7650733.png "屏幕截图.png")
