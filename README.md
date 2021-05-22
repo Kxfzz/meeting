@@ -11,18 +11,15 @@
 
 下载源码后直接解压，然后用idea打开
 
-打开后如图
-
-
 配置tomcat
-
-
-
-
 
 然后点运行即可
 ```
-
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222923_2fd2e141_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222956_f14bcd9f_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/223013_28261e5c_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/223048_5dd36b50_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/223114_6e888f2f_7650733.png "屏幕截图.png")
 
 
 ## 2.每个页面设计的功能
