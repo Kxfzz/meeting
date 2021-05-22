@@ -8,6 +8,20 @@
 导入数据库文件meeting.sql
 
 普通用户账号kxf密码1 管理员账号xzb密码123
+
+下载源码后直接解压，然后用idea打开
+
+打开后如图
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/215828_125d1d58_7650733.png "屏幕截图.png")
+
+配置tomcat
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222027_9df99401_7650733.png "屏幕截图.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222129_561779b9_7650733.png "屏幕截图.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222158_8c07e6fb_7650733.png "屏幕截图.png")
+
+然后点运行即可
 ```
 
 
