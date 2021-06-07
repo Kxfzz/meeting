@@ -80,9 +80,15 @@
                 <div class="header-nav">
                     <a type="button" class="clickbutton" href="/admin/searchemployees?status=${employee.status}&page=1">首页</a>
                     <a type="button" class="clickbutton"
-                       href="/admin/searchemployees?status=${employee.status}&page=${page-1}">上页</a>
+                            <#if page!=1>
+                                href="/admin/searchemployees?status=${employee.status}&page=${page-1}"
+                            </#if>
+                    >上页</a>
                     <a type="button" class="clickbutton"
-                       href="/admin/searchemployees?status=${employee.status}&page=${page+1}">下页</a>
+                            <#if page!=pagenum>
+                                href="/admin/searchemployees?status=${employee.status}&page=${page+1}"
+                            </#if>
+                    >下页</a>
                     <a type="button" class="clickbutton"
                        href="/admin/searchemployees?status=${employee.status}&page=${pagenum}">末页</a>
                     <form action="/admin/searchemployees"

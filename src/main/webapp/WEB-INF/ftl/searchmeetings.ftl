@@ -77,9 +77,15 @@
                 <div class="header-nav">
                     <a type="button" class="clickbutton" href="/searchmeetings?&page=1">首页</a>
                     <a type="button" class="clickbutton"
-                       href="/searchmeetings?page=${page-1}">上页</a>
+                            <#if page!=1>
+                                href="/searchmeetings?&page=${page-1}"
+                            </#if>
+                    >上页</a>
                     <a type="button" class="clickbutton"
-                       href="/searchmeetings?page=${page+1}">下页</a>
+                            <#if page!=pagenum>
+                                href="/searchmeetings?&page=${page+1}"
+                            </#if>
+                    >下页</a>
                     <a type="button" class="clickbutton"
                        href="/searchmeetings?page=${pagenum}">末页</a>
                     <form action="" style="display: inline" method="get">
