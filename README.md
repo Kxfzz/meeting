@@ -1,6 +1,6 @@
 # 会议管理系统
 
-> **后端基于SSM、前端基于Freemarker写的会议管理系统**
+> **后端基于SSM、前端基于Freemarker写的会议管理系统、使用JDK8**
 
 ## 1. 使用说明
 
@@ -8,8 +8,18 @@
 导入数据库文件meeting.sql
 
 普通用户账号kxf密码1 管理员账号xzb密码123
-```
 
+下载源码后直接解压，然后用idea打开
+
+配置tomcat
+
+然后点运行即可
+```
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222923_2fd2e141_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/222956_f14bcd9f_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/223013_28261e5c_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/223048_5dd36b50_7650733.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0522/223114_6e888f2f_7650733.png "屏幕截图.png")
 
 
 ## 2.每个页面设计的功能
@@ -77,3 +87,6 @@ db.url=jdbc:mysql:///meeting?useUnicode=true&characterEncoding=UTF-8&serverTimez
 - Freemarker
 - jQuery+Ajax
 - MySQL
+
+## 7.页面：
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0519/161416_a92519c7_7650733.png "屏幕截图.png")
